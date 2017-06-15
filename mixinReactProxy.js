@@ -10,13 +10,16 @@ module.exports = function(React, desc) {
 			return null;
 		}
 	};
+  desc.componentWillUnmount = function() {
+    this.isUnmounted = true;
+  }
 	desc.getInitialState = function() {
 		return { component: this.loadComponent() };
 	};
 	desc.componentDidMount = function() {
 		if(!this.state.component) {
 			this.loadComponent(function(component) {
-				if(this.isMounted()) {
+				if(!this.isUnmounted) {
 					this.setState({ component: component });
 				}
 			}.bind(this));
