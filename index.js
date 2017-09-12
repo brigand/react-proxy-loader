@@ -24,7 +24,7 @@ module.exports.pitch = function(remainingRequest) {
 		'var mixinReactProxy = require(' + loaderUtils.stringifyRequest(this, require.resolve("./mixinReactProxy")) + ');',
 		'mixinReactProxy(React, desc);',
 		'module.exports = React.createClass(desc);',
-    'module.exports.requestPreload = desc.loadComponent',
+    'module.exports.requestPreload = function requestPreload() { desc.loadComponent(function() {}) };',
 		'module.exports.Mixin = desc;'
 	].join("\n");
 };
