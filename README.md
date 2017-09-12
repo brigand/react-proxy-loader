@@ -1,6 +1,10 @@
-# react-proxy-loader
+# better-react-proxy-loader
 
 Wraps a react component in a proxy component to enable Code Splitting (loads a react component and its dependencies on demand).
+
+Improvements over react-proxy-loader:
+
+- adds `Wrapper.requestPreload()` which starts loading the component before you actually render it
 
 ## installation
 
