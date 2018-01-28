@@ -38,7 +38,6 @@ module.exports.pitch = function(remainingRequest) {
     };
 
     C.requestPreload = function requestPreload() { C.prototype.loadComponent(function() {}) };
-    console.log(C.prototype);
     module.exports = C;
   `;
 };
