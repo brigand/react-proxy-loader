@@ -18,9 +18,10 @@ module.exports.pitch = function(remainingRequest) {
       this.state = this._getInitialState();
     }
     Object.defineProperty(C, 'name', { value: 'ReactProxyComponent' });
-    var mixin = requre(${loaderUtils.stringifyRequest(this, require.resolve("./mixinReactProxy"))});
+    var mixin = require(${loaderUtils.stringifyRequest(this, require.resolve("./mixinReactProxy"))});
 
     C.prototype = Object.create(RComponent.prototype);
+    C.prototype.constructor = RComponent;
     mixin(React, C.prototype);
 
     C.prototype.loadComponent = function(callback) {
@@ -36,7 +37,8 @@ module.exports.pitch = function(remainingRequest) {
       return component;
     };
 
-    C.requestPreload = function requestPreload() { C.prototype.loadComponent(function() {});
+    C.requestPreload = function requestPreload() { C.prototype.loadComponent(function() {}) };
+    console.log(C.prototype);
     module.exports = C;
   `;
 };

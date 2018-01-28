@@ -1,5 +1,4 @@
 module.exports = function(React, desc) {
-	desc.displayName = "ReactProxy";
 	desc.render = function() {
 		var Component = this.state.component;
 		if(Component) {
@@ -13,7 +12,7 @@ module.exports = function(React, desc) {
   desc.componentWillUnmount = function() {
     this.isUnmounted = true;
   }
-	desc.getInitialState = function() {
+	desc._getInitialState = function() {
 		return { component: this.loadComponent() };
 	};
 	desc.componentDidMount = function() {
